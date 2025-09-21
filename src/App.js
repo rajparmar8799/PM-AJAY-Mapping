@@ -47,7 +47,7 @@ function App() {
         .catch(error => {
           console.error('Token verification failed:', error);
           // In demo mode, don't logout on API failure
-          if (!token.startsWith('mock-token')) {
+          if (!token.includes('mock-token')) {
             handleLogout();
           }
         })

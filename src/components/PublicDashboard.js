@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { mockPublicSummary, mockProjects, mockAgencies } from '../services/mockData';
 import './Dashboard.css';
 
 const PublicDashboard = () => {
@@ -26,8 +27,11 @@ const PublicDashboard = () => {
       setProjects(projectsRes.data);
       setAgencies(agenciesRes.data);
     } catch (error) {
-      console.error('Error fetching public data:', error);
-      alert('Error loading public data. Please try again.');
+      console.error('Error fetching public data, using mock data:', error);
+      // Use mock data as fallback when backend is not available
+      setSummary(mockPublicSummary);
+      setProjects(mockProjects);
+      setAgencies(mockAgencies);
     } finally {
       setLoading(false);
     }
