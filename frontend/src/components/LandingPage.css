@@ -55,7 +55,7 @@
 }
 
 .gov-nav a {
-  color: #202124;
+  color: #000000;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -65,7 +65,7 @@
 }
 
 .gov-nav a:hover {
-  background-color: #f8f9fa;
+  background-color: #437cb6;
 }
 
 /* Government Hero Section */
@@ -1764,7 +1764,7 @@
 
 /* Login Button in Header */
 .login-btn {
-  background: #1a73e8;
+  background: #ffffff;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
