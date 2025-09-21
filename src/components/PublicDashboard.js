@@ -15,26 +15,14 @@ const PublicDashboard = () => {
   }, []);
 
   const fetchPublicData = async () => {
-    try {
-      setLoading(true);
-      const [summaryRes, projectsRes, agenciesRes] = await Promise.all([
-        axios.get('/api/public/summary'),
-        axios.get('/api/public/projects'),
-        axios.get('/api/public/agencies')
-      ]);
-
-      setSummary(summaryRes.data);
-      setProjects(projectsRes.data);
-      setAgencies(agenciesRes.data);
-    } catch (error) {
-      console.error('Error fetching public data, using mock data:', error);
-      // Use mock data as fallback when backend is not available
+    // Use mock data directly for demo purposes
+    setLoading(true);
+    setTimeout(() => {
       setSummary(mockPublicSummary);
       setProjects(mockProjects);
       setAgencies(mockAgencies);
-    } finally {
       setLoading(false);
-    }
+    }, 1000); // Simulate loading time
   };
 
   const formatCurrency = (amount) => {

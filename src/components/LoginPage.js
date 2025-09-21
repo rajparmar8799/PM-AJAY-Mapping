@@ -84,23 +84,8 @@ const LoginPage = ({ onLogin }) => {
   const handleQuickLogin = async (userProfile) => {
     setLoading(true);
 
-    try {
-      const response = await api.post('/api/auth/login', {
-        username: userProfile.user.username,
-        password: 'demo123',
-        role: userProfile.user.role
-      });
-
-      const { token, user } = response.data;
-
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', token);
-
-      onLogin(user, token);
-    } catch (error) {
-      console.error('Login error, using demo mode:', error);
-
-      // Use mock authentication when backend is not available
+    // Use mock authentication directly for demo
+    setTimeout(() => {
       const mockToken = `mock-token-${userProfile.user.role}-${Date.now()}`;
       const mockUser = {
         ...userProfile.user,
@@ -111,9 +96,8 @@ const LoginPage = ({ onLogin }) => {
       localStorage.setItem('token', mockToken);
 
       onLogin(mockUser, mockToken);
-    } finally {
       setLoading(false);
-    }
+    }, 800); // Simulate authentication delay
   };
 
   if (loading) {
