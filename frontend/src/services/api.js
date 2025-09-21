@@ -2,7 +2,9 @@ import axios from 'axios';
 
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: process.env.NODE_ENV === 'production'
+    ? '' // Use relative URLs for Vercel serverless functions
+    : 'http://localhost:5000', // Use localhost for development
   timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
