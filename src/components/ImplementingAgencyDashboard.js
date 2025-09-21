@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import { mockProjects, mockProposals, mockForumMessages, mockProgressHistory } from '../services/mockData';
 import './Dashboard.css';
 
 const ImplementingAgencyDashboard = ({ user }) => {
@@ -42,29 +43,32 @@ const ImplementingAgencyDashboard = ({ user }) => {
   }, []);
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const [summaryRes, projectsRes, proposalsRes, forumRes, historyRes] = await Promise.all([
-        api.get('/api/dashboard/summary'),
-        api.get('/api/projects'),
-        api.get('/api/proposals'),
-        api.get('/api/forum/messages'),
-        api.get('/api/progress/history')
-      ]);
-      
-      setSummary(summaryRes.data);
-      setProjects(projectsRes.data);
-      setProposals(proposalsRes.data);
-      setForumMessages(forumRes.data);
-      setProgressHistory(historyRes.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      if (error.response?.status !== 401) {
-        alert('Error loading data. Please try again.');
-      }
-    } finally {
+    // Use mock data directly for demo purposes
+    setLoading(true);
+    setTimeout(() => {
+      // Filter projects assigned to this agency
+      const agencyProjects = mockProjects.filter(p => p.implementing_agency === user.id);
+      const completedProjects = agencyProjects.filter(p => p.status === 'Completed' || p.progress_percentage >= 100).length;
+      const totalBudget = agencyProjects.reduce((sum, p) => sum + p.budget_allocated, 0);
+
+      const agencySummary = {
+        assignedProjects: agencyProjects.length,
+        completedProjects: completedProjects,
+        inProgressProjects: agencyProjects.length - completedProjects,
+        totalBudget: totalBudget,
+        averageProgress: agencyProjects.length > 0 ? Math.round(agencyProjects.reduce((sum, p) => sum + p.progress_percentage, 0) / agencyProjects.length) : 0
+      };
+
+      // Filter proposals assigned to this agency
+      const agencyProposals = mockProposals.filter(p => p.assigned_agency === user.id);
+
+      setSummary(agencySummary);
+      setProjects(agencyProjects);
+      setProposals(agencyProposals);
+      setForumMessages(mockForumMessages);
+      setProgressHistory(mockProgressHistory);
       setLoading(false);
-    }
+    }, 1000); // Simulate loading time
   };
 
   const formatCurrency = (amount) => {
@@ -158,69 +162,31 @@ const ImplementingAgencyDashboard = ({ user }) => {
 
   const submitProgressUpdate = async (e) => {
     e.preventDefault();
-    
-    try {
-      const formData = new FormData();
-      formData.append('status', updateForm.status);
-      formData.append('progress_percentage', parseInt(updateForm.progress));
-      formData.append('milestone', updateForm.milestone);
-      formData.append('notes', updateForm.notes);
-      formData.append('issues', updateForm.issues);
-      formData.append('next_steps', updateForm.nextSteps);
-      formData.append('expected_completion', updateForm.expectedCompletion);
-      
-      // Add files if any
-      updateForm.filesUploaded.forEach((file, index) => {
-        formData.append('files', file);
-      });
-      
-      await api.put(`/api/projects/${updateForm.projectId}/progress`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        }
-      });
-      
-      fetchData(); // Refresh data
+
+    // Mock submission - just show success message
+    setTimeout(() => {
       closeUpdateModal();
-      alert('Progress updated successfully!');
-    } catch (error) {
-      console.error('Error updating progress:', error);
-      alert('Error updating progress. Please try again.');
-    }
+      alert('Progress updated successfully! (Demo Mode)');
+    }, 500);
   };
 
   const quickUpdateStatus = async (projectId, status, progress) => {
-    try {
-      await api.put(`/api/projects/${projectId}/status`, {
-        status,
-        progress_percentage: progress
-      });
-      fetchData();
-      alert('Status updated successfully!');
-    } catch (error) {
-      console.error('Error updating status:', error);
-      alert('Error updating status. Please try again.');
-    }
+    // Mock update - just show success message
+    setTimeout(() => {
+      alert('Status updated successfully! (Demo Mode)');
+    }, 300);
   };
 
   const postMessage = async (e) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
 
-    try {
-      await api.post('/api/forum/messages', {
-        message: newMessage,
-        project_id: selectedProject || null
-      });
-      
+    // Mock posting - just show success message
+    setTimeout(() => {
       setNewMessage('');
       setSelectedProject('');
-      fetchData(); // Refresh forum messages
-      alert('Message posted successfully!');
-    } catch (error) {
-      console.error('Error posting message:', error);
-      alert('Error posting message. Please try again.');
-    }
+      alert('Message posted successfully! (Demo Mode)');
+    }, 500);
   };
 
   // Proposal Review Functions
@@ -243,28 +209,11 @@ const ImplementingAgencyDashboard = ({ user }) => {
     e.preventDefault();
     if (!selectedProposal) return;
 
-    try {
-      console.log('🔍 Submitting proposal review...');
-      console.log('Proposal ID:', selectedProposal.id);
-      console.log('Current token:', localStorage.getItem('token'));
-      console.log('Current user:', localStorage.getItem('user'));
-      console.log('Review Data:', { status: reviewForm.status, review_comments: reviewForm.review_comments });
-      
-      const response = await api.put(`/api/proposals/${selectedProposal.id}/review`, {
-        status: reviewForm.status,
-        review_comments: reviewForm.review_comments
-      });
-      
-      console.log('✅ Review response:', response.data);
-      fetchData(); // Refresh proposals
+    // Mock submission - just show success message
+    setTimeout(() => {
       closeReviewModal();
-      alert('Proposal review submitted successfully!');
-    } catch (error) {
-      console.error('❌ Error reviewing proposal:', error);
-      console.error('Error details:', error.response?.data);
-      console.error('Status code:', error.response?.status);
-      alert(`Error submitting review: ${error.response?.data?.message || error.message}`);
-    }
+      alert('Proposal review submitted successfully! (Demo Mode)');
+    }, 500);
   };
 
   const openAcceptModal = (proposal) => {
@@ -291,33 +240,11 @@ const ImplementingAgencyDashboard = ({ user }) => {
     e.preventDefault();
     if (!selectedProposal) return;
 
-    try {
-      console.log('🎉 Submitting proposal acceptance...');
-      console.log('Proposal ID:', selectedProposal.id);
-      console.log('Current token:', localStorage.getItem('token'));
-      console.log('Current user:', localStorage.getItem('user'));
-      console.log('Accept Data:', { 
-        start_date: acceptForm.start_date, 
-        expected_completion: acceptForm.expected_completion, 
-        implementation_plan: acceptForm.implementation_plan 
-      });
-      
-      const response = await api.put(`/api/proposals/${selectedProposal.id}/accept`, {
-        start_date: acceptForm.start_date,
-        expected_completion: acceptForm.expected_completion,
-        implementation_plan: acceptForm.implementation_plan
-      });
-      
-      console.log('✅ Accept response:', response.data);
-      fetchData(); // Refresh proposals and projects
+    // Mock submission - just show success message
+    setTimeout(() => {
       closeAcceptModal();
-      alert('Proposal accepted successfully! Project has been created.');
-    } catch (error) {
-      console.error('❌ Error accepting proposal:', error);
-      console.error('Error details:', error.response?.data);
-      console.error('Status code:', error.response?.status);
-      alert(`Error accepting proposal: ${error.response?.data?.message || error.message}`);
-    }
+      alert('Proposal accepted successfully! Project has been created. (Demo Mode)');
+    }, 500);
   };
 
   if (loading) {

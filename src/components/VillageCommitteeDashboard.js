@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import { mockProjects } from '../services/mockData';
 import './Dashboard.css';
 import './DashboardExtensions.css';
 
@@ -14,23 +15,26 @@ const VillageCommitteeDashboard = ({ user }) => {
   }, []);
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const [summaryRes, projectsRes] = await Promise.all([
-        api.get('/api/dashboard/summary'),
-        api.get('/api/projects')
-      ]);
-      
-      setSummary(summaryRes.data);
-      setProjects(projectsRes.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      if (error.response?.status !== 401) {
-        alert('Error loading data. Please try again.');
-      }
-    } finally {
+    // Use mock data directly for demo purposes
+    setLoading(true);
+    setTimeout(() => {
+      // Filter projects for the user's village
+      const villageProjects = mockProjects.filter(p => p.village === user.village);
+      const completedProjects = villageProjects.filter(p => p.status === 'Completed' || p.progress_percentage >= 100).length;
+      const totalBudget = villageProjects.reduce((sum, p) => sum + p.budget_allocated, 0);
+
+      const villageSummary = {
+        villageProjects: villageProjects.length,
+        completedProjects: completedProjects,
+        inProgressProjects: villageProjects.length - completedProjects,
+        budgetAllocated: totalBudget,
+        averageProgress: villageProjects.length > 0 ? Math.round(villageProjects.reduce((sum, p) => sum + p.progress_percentage, 0) / villageProjects.length) : 0
+      };
+
+      setSummary(villageSummary);
+      setProjects(villageProjects);
       setLoading(false);
-    }
+    }, 1000); // Simulate loading time
   };
 
   const formatCurrency = (amount) => {
@@ -62,24 +66,11 @@ const VillageCommitteeDashboard = ({ user }) => {
 
   const submitVillageNeeds = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const needsData = {
-      needs_type: formData.get('needs'),
-      description: formData.get('description'),
-      priority: formData.get('priority'),
-      expected_beneficiaries: parseInt(formData.get('beneficiaries')),
-      estimated_cost: parseInt(formData.get('estimated_cost') || 0),
-      justification: formData.get('justification') || ''
-    };
-    
-    try {
-      await api.post('/api/village/needs', needsData);
-      alert('Village needs assessment submitted successfully!');
+    // Mock submission - just show success message
+    setTimeout(() => {
+      alert('Village needs assessment submitted successfully! (Demo Mode)');
       e.target.reset();
-    } catch (error) {
-      console.error('Error submitting needs assessment:', error);
-      alert('Error submitting needs assessment. Please try again.');
-    }
+    }, 500);
   };
 
   if (loading) {
@@ -321,24 +312,13 @@ const VillageCommitteeDashboard = ({ user }) => {
                 Share your observations and feedback about ongoing or completed projects in {user.village}.
               </p>
               
-              <form onSubmit={async (e) => {
+              <form onSubmit={(e) => {
                 e.preventDefault();
-                const formData = new FormData(e.target);
-                const feedbackData = {
-                  project_id: formData.get('project_id'),
-                  feedback_type: formData.get('feedback_type'),
-                  content: formData.get('feedback_content'),
-                  rating: formData.get('rating')
-                };
-                
-                try {
-                  await api.post('/api/village/feedback', feedbackData);
-                  alert('Feedback submitted successfully! Thank you for your input.');
+                // Mock submission - just show success message
+                setTimeout(() => {
+                  alert('Feedback submitted successfully! Thank you for your input. (Demo Mode)');
                   e.target.reset();
-                } catch (error) {
-                  console.error('Error submitting feedback:', error);
-                  alert('Error submitting feedback. Please try again.');
-                }
+                }, 500);
               }}>
                 <div className="form-group">
                   <label className="form-label">Select Project</label>

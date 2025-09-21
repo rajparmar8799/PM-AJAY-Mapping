@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import { mockPublicSummary, mockProjects } from '../services/mockData';
 import './Dashboard.css';
 import './DashboardExtensions.css';
 
@@ -40,23 +41,29 @@ const StateAdminDashboard = ({ user }) => {
   }, [tasks, storageKey]);
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const [summaryRes, projectsRes] = await Promise.all([
-        api.get('/api/dashboard/summary'),
-        api.get('/api/projects')
-      ]);
-      
-      setSummary(summaryRes.data);
-      setProjects(projectsRes.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      if (error.response?.status !== 401) {
-        alert('Error loading data. Please try again.');
-      }
-    } finally {
+    // Use mock data directly for demo purposes
+    setLoading(true);
+    setTimeout(() => {
+      // Filter projects for the user's state
+      const stateProjects = mockProjects.filter(p => p.state === user.state);
+      const completedProjects = stateProjects.filter(p => p.status === 'Completed' || p.progress_percentage >= 100).length;
+      const totalBudget = stateProjects.reduce((sum, p) => sum + p.budget_allocated, 0);
+      const utilizedBudget = stateProjects.reduce((sum, p) => sum + p.budget_utilized, 0);
+
+      const stateSummary = {
+        stateProjects: stateProjects.length,
+        completedProjects: completedProjects,
+        inProgressProjects: stateProjects.length - completedProjects,
+        budgetAllocated: totalBudget,
+        budgetUtilized: utilizedBudget,
+        budgetUtilizationPercent: totalBudget > 0 ? Math.round((utilizedBudget / totalBudget) * 100) : 0,
+        averageProgress: stateProjects.length > 0 ? Math.round(stateProjects.reduce((sum, p) => sum + p.progress_percentage, 0) / stateProjects.length) : 0
+      };
+
+      setSummary(stateSummary);
+      setProjects(stateProjects);
       setLoading(false);
-    }
+    }, 1000); // Simulate loading time
   };
 
   const formatCurrency = (amount) => {
