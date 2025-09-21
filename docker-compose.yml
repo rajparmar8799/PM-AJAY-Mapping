@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: pm_ajay_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pm_ajay_portal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/scripts/initDatabase.js:/docker-entrypoint-initdb.d/init-db.js
+    ports:
+      - "5432:5432"
+    networks:
+      - pm_ajay_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pm_ajay_backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: pm_ajay_portal
+      DB_USER: postgres
+      DB_PASSWORD: password
+      JWT_SECRET: pm-ajay-portal-secret-key-2024
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend/uploads:/app/uploads
+    networks:
+      - pm_ajay_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pm_ajay_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - pm_ajay_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Database Initialization (one-time setup)
+  db-init:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pm_ajay_db_init
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: pm_ajay_portal
+      DB_USER: postgres
+      DB_PASSWORD: password
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["node", "scripts/initDatabase.js"]
+    networks:
+      - pm_ajay_network
+    profiles:
+      - init
+
+volumes:
+  postgres_data:
+
+networks:
+  pm_ajay_network:
+    driver: bridge

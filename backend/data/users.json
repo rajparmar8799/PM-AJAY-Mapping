@@ -1,0 +1,148 @@
+{
+  "users": [
+    {
+      "id": "cm001",
+      "username": "ministry_admin",
+      "password": "central123",
+      "role": "central_ministry",
+      "name": "Dr. Rajesh Kumar",
+      "department": "Ministry of Rural Development",
+      "email": "rajesh.kumar@gov.in",
+      "phone": "+91-11-23061234"
+    },
+    {
+      "id": "cm002", 
+      "username": "policy_head",
+      "password": "policy456",
+      "role": "central_ministry",
+      "name": "Mrs. Priya Sharma",
+      "department": "Policy Planning Division",
+      "email": "priya.sharma@gov.in",
+      "phone": "+91-11-23061235"
+    },
+    {
+      "id": "sa001",
+      "username": "maharashtra_admin",
+      "password": "state123",
+      "role": "state_admin",
+      "name": "Shri Anil Deshmukh",
+      "state": "Maharashtra",
+      "district": "Mumbai",
+      "email": "anil.deshmukh@mah.gov.in",
+      "phone": "+91-22-22061234"
+    },
+    {
+      "id": "sa002",
+      "username": "karnataka_admin",
+      "password": "state456",
+      "role": "state_admin", 
+      "name": "Ms. Lakshmi Reddy",
+      "state": "Karnataka",
+      "district": "Bangalore",
+      "email": "lakshmi.reddy@kar.gov.in",
+      "phone": "+91-80-22061234"
+    },
+    {
+      "id": "sa003",
+      "username": "uttar_pradesh_admin",
+      "password": "state789",
+      "role": "state_admin",
+      "name": "Shri Ramesh Yadav", 
+      "state": "Uttar Pradesh",
+      "district": "Lucknow",
+      "email": "ramesh.yadav@up.gov.in",
+      "phone": "+91-522-22061234"
+    },
+    {
+      "id": "vc001",
+      "username": "village_head1",
+      "password": "village123",
+      "role": "village_committee",
+      "name": "Sarpanch Sunita Devi",
+      "village": "Ramgarh",
+      "block": "Jhajjar",
+      "district": "Jhajjar",
+      "state": "Haryana",
+      "email": "sunita.devi@village.gov.in",
+      "phone": "+91-9876543210"
+    },
+    {
+      "id": "vc002",
+      "username": "village_head2", 
+      "password": "village456",
+      "role": "village_committee",
+      "name": "Sarpanch Mohan Lal",
+      "village": "Kishanganj",
+      "block": "Alwar",
+      "district": "Alwar", 
+      "state": "Rajasthan",
+      "email": "mohan.lal@village.gov.in",
+      "phone": "+91-9876543211"
+    },
+    {
+      "id": "vc003",
+      "username": "village_head3",
+      "password": "village789",
+      "role": "village_committee",
+      "name": "Sarpanch Kamala Das",
+      "village": "Belgaum Rural",
+      "block": "Belgaum",
+      "district": "Belgaum",
+      "state": "Karnataka", 
+      "email": "kamala.das@village.gov.in",
+      "phone": "+91-9876543212"
+    },
+    {
+      "id": "ia001",
+      "username": "infra_agency1",
+      "password": "agency123",
+      "role": "implementing_agency",
+      "name": "Bharat Infrastructure Pvt Ltd",
+      "type": "Infrastructure Development",
+      "contact_person": "Eng. Suresh Patel",
+      "email": "suresh.patel@bharatinfra.com",
+      "phone": "+91-9123456789",
+      "license_no": "INFRA/2023/001",
+      "projects_assigned": ["PROJ001", "PROJ003", "PROJ007"]
+    },
+    {
+      "id": "ia002",
+      "username": "training_agency1",
+      "password": "agency456", 
+      "role": "implementing_agency",
+      "name": "Skill Development Institute",
+      "type": "Training & Skill Development",
+      "contact_person": "Dr. Meera Gupta",
+      "email": "meera.gupta@skilldev.org",
+      "phone": "+91-9123456788",
+      "license_no": "TRAIN/2023/002",
+      "projects_assigned": ["PROJ002", "PROJ005", "PROJ008"]
+    },
+    {
+      "id": "ia003",
+      "username": "hostel_agency1",
+      "password": "agency789",
+      "role": "implementing_agency",
+      "name": "Rural Hostel Construction Co.",
+      "type": "Hostel Construction",
+      "contact_person": "Shri Vikram Singh",
+      "email": "vikram.singh@ruralhostel.com", 
+      "phone": "+91-9123456787",
+      "license_no": "HOSTEL/2023/003",
+      "projects_assigned": ["PROJ004", "PROJ006", "PROJ009"]
+    },
+    {
+      "id": "ia004",
+      "username": "multi_agency1",
+      "password": "agency101",
+      "role": "implementing_agency", 
+      "name": "Comprehensive Development Corp",
+      "type": "Multi-Purpose Development",
+      "contact_person": "Mrs. Ritu Agarwal",
+      "email": "ritu.agarwal@compdev.in",
+      "phone": "+91-9123456786",
+      "license_no": "MULTI/2023/004", 
+      "projects_assigned": ["PROJ010", "PROJ011"]
+    }
+  ]
+}

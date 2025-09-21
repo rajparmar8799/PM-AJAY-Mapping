@@ -1,0 +1,351 @@
+/* Google-like Login Page Styles */
+
+.login-page {
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.login-header {
+  border-bottom: 1px solid #e8eaed;
+  background: #ffffff;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  color: #1a73e8;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.back-link {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Main Content */
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  background: #f8f9fa;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 448px;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.08), 0 4px 12px rgba(60, 64, 67, 0.08);
+  border: 1px solid #e8eaed;
+  overflow: hidden;
+}
+
+.login-header {
+  padding: 48px 40px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #202124;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  color: #5f6368;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.login-content {
+  padding: 24px 40px 48px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #202124;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.role-selection {
+  margin-bottom: 32px;
+}
+
+.role-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role-card {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.role-card:hover {
+  background: #f8f9fa;
+  border-color: #1a73e8;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.08);
+}
+
+.role-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.role-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.role-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #202124;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.role-subtitle {
+  font-size: 14px;
+  color: #5f6368;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  font-size: 13px;
+  color: #5f6368;
+  font-weight: 500;
+}
+
+.user-location {
+  font-size: 12px;
+  color: #80868b;
+}
+
+.role-arrow {
+  font-size: 18px;
+  color: #5f6368;
+  margin-left: 16px;
+  transition: color 0.2s ease;
+}
+
+.role-card:hover .role-arrow {
+  color: #1a73e8;
+}
+
+/* Demo Notice */
+.demo-notice {
+  background: #e8f0fe;
+  border: 1px solid #d2e3fc;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.notice-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notice-text {
+  font-size: 14px;
+  color: #202124;
+  line-height: 1.4;
+}
+
+.notice-text code {
+  background: #f1f3f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 13px;
+  color: #202124;
+}
+
+/* Footer */
+.login-footer {
+  border-top: 1px solid #e8eaed;
+  background: #ffffff;
+  padding: 16px 24px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: #5f6368;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  color: #5f6368;
+  font-size: 14px;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8eaed;
+  border-top: 3px solid #1a73e8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #5f6368;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-main {
+    padding: 24px 16px;
+  }
+
+  .login-container {
+    max-width: 100%;
+  }
+
+  .login-header {
+    padding: 32px 24px 16px;
+  }
+
+  .login-content {
+    padding: 16px 24px 32px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .role-card {
+    padding: 12px 16px;
+  }
+
+  .role-icon {
+    font-size: 20px;
+    margin-right: 12px;
+  }
+
+  .role-title {
+    font-size: 15px;
+  }
+
+  .role-subtitle {
+    font-size: 13px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 12px 16px;
+  }
+
+  .login-header {
+    padding: 24px 16px 12px;
+  }
+
+  .login-content {
+    padding: 12px 16px 24px;
+  }
+
+  .demo-notice {
+    padding: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}

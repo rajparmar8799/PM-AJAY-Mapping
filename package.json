@@ -1,0 +1,26 @@
+{
+  "name": "pm-ajay-portal",
+  "version": "1.0.0",
+  "description": "Government-style PM-AJAY Portal with role-based authentication",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": [
+    "government",
+    "portal",
+    "role-based",
+    "authentication"
+  ],
+  "author": "PM-AJAY Portal Team",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.12.2"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "messages": [
+    {
+      "id": "msg001",
+      "user_id": "ia001",
+      "user_name": "Bharat Infrastructure Pvt Ltd",
+      "project_id": "PROJ001",
+      "message": "Rural Road Construction Phase 1 update: We have successfully completed 75% of the road construction work. Currently working on the final stretch connecting villages 12-15. Expected completion by end of December 2024.",
+      "timestamp": "2024-09-15T10:30:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg002", 
+      "user_id": "ia002",
+      "user_name": "Skill Development Institute",
+      "project_id": "PROJ002", 
+      "message": "Digital Literacy Training Program: We are pleased to report that 400 out of 500 rural youth have completed the basic digital literacy modules. The response has been excellent. Planning to extend the program based on demand.",
+      "timestamp": "2024-09-14T14:15:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg003",
+      "user_id": "ia001",
+      "user_name": "Bharat Infrastructure Pvt Ltd", 
+      "project_id": "PROJ003",
+      "message": "Water Pipeline Project Query: We need approval from state admin for the revised pipeline route due to environmental clearance issues. The new route will add 2 weeks to timeline but ensure better water flow.",
+      "timestamp": "2024-09-13T09:45:00Z",
+      "type": "query"
+    },
+    {
+      "id": "msg004",
+      "user_id": "ia003",
+      "user_name": "Rural Hostel Construction Co.",
+      "project_id": "PROJ004",
+      "message": "Girls Hostel Construction Update: Foundation and structural work completed ahead of schedule. Moving to interior work phase. All safety measures are in place as per government guidelines.",
+      "timestamp": "2024-09-12T16:20:00Z", 
+      "type": "update"
+    },
+    {
+      "id": "msg005",
+      "user_id": "ia002",
+      "user_name": "Skill Development Institute",
+      "project_id": "PROJ005",
+      "message": "Skill Development Center: Equipment installation completed. Staff training is underway. We expect to launch the center by end of June as planned. Local community response is very positive.",
+      "timestamp": "2024-09-11T11:30:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg006",
+      "user_id": "ia003",
+      "user_name": "Rural Hostel Construction Co.",
+      "project_id": "PROJ006",
+      "message": "Community Hostel Renovation: Assessment phase completed. We identified additional structural improvements needed. This may require 10% budget increase. Detailed report uploaded.",
+      "timestamp": "2024-09-10T13:45:00Z",
+      "type": "query"
+    },
+    {
+      "id": "msg007",
+      "user_id": "ia001", 
+      "user_name": "Bharat Infrastructure Pvt Ltd",
+      "project_id": "PROJ007",
+      "message": "Solar Street Light Installation: 180 out of 200 lights installed successfully. Conducting final testing phase. All lights are functioning optimally with excellent solar charging efficiency.",
+      "timestamp": "2024-09-09T15:10:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg008",
+      "user_id": "ia004",
+      "user_name": "Comprehensive Development Corp",
+      "project_id": "PROJ010",
+      "message": "Integrated Rural Development: Master planning phase completed successfully. Community stakeholder meetings concluded with positive feedback. Ready to commence Phase 1 infrastructure work.",
+      "timestamp": "2024-09-08T10:00:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg009",
+      "user_id": "ia002",
+      "user_name": "Skill Development Institute",
+      "project_id": "PROJ008",
+      "message": "Women Entrepreneurship Program: Participant selection completed. 200 women selected from various rural areas. Training material preparation in progress. Expecting great outcomes from this initiative.",
+      "timestamp": "2024-09-07T12:30:00Z", 
+      "type": "update"
+    },
+    {
+      "id": "msg010",
+      "user_id": "ia003",
+      "user_name": "Rural Hostel Construction Co.",
+      "project_id": "PROJ009",
+      "message": "Boys Hostel Construction: Foundation work is progressing well despite monsoon challenges. Implemented additional waterproofing measures. Timeline still on track for January 2025 completion.",
+      "timestamp": "2024-09-06T14:45:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg011",
+      "user_id": "ia004", 
+      "user_name": "Comprehensive Development Corp",
+      "project_id": "PROJ011", 
+      "message": "Smart Village Initiative: Digital infrastructure work has begun. Fiber optic cables being laid across the village. Local IT training sessions started for village committee members.",
+      "timestamp": "2024-09-05T16:15:00Z",
+      "type": "update"
+    },
+    {
+      "id": "msg012",
+      "user_id": "ia001",
+      "user_name": "Bharat Infrastructure Pvt Ltd",
+      "project_id": "GENERAL",
+      "message": "General Query: Are there any updated guidelines for monsoon season construction activities? We want to ensure all our projects comply with the latest safety standards.",
+      "timestamp": "2024-09-04T09:30:00Z",
+      "type": "query"
+    }
+  ]
+}
