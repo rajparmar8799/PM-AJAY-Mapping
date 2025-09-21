@@ -20,10 +20,15 @@ export const mockProjects = [
     district: 'Mumbai',
     village: 'Thane Rural',
     budget_allocated: 25000000,
+    budget_utilized: 18750000,
     progress_percentage: 75,
     status: 'In Progress',
     start_date: '2024-01-15',
-    expected_completion: '2024-12-31'
+    expected_completion: '2024-12-31',
+    implementing_agency: 'ia001',
+    agency_name: 'Bharat Infrastructure Pvt Ltd',
+    approval_status: 'Approved',
+    approved_amount: 25000000
   },
   {
     id: 'PROJ002',
@@ -34,10 +39,15 @@ export const mockProjects = [
     district: 'Pune',
     village: 'Shirur',
     budget_allocated: 18000000,
+    budget_utilized: 5400000,
     progress_percentage: 30,
     status: 'In Progress',
     start_date: '2024-03-01',
-    expected_completion: '2024-11-30'
+    expected_completion: '2024-11-30',
+    implementing_agency: 'ia002',
+    agency_name: 'Skill Development Institute',
+    approval_status: 'Approved',
+    approved_amount: 18000000
   },
   {
     id: 'PROJ003',
@@ -48,10 +58,15 @@ export const mockProjects = [
     district: 'Jhajjar',
     village: 'Ramgarh',
     budget_allocated: 15000000,
+    budget_utilized: 9000000,
     progress_percentage: 60,
     status: 'In Progress',
     start_date: '2024-01-01',
-    expected_completion: '2024-10-31'
+    expected_completion: '2024-10-31',
+    implementing_agency: 'ia003',
+    agency_name: 'National Construction Corp',
+    approval_status: 'Approved',
+    approved_amount: 15000000
   },
   {
     id: 'PROJ004',
@@ -62,10 +77,15 @@ export const mockProjects = [
     district: 'Jhajjar',
     village: 'Bahadurgarh',
     budget_allocated: 8000000,
+    budget_utilized: 6400000,
     progress_percentage: 80,
     status: 'Near Completion',
     start_date: '2024-02-01',
-    expected_completion: '2024-08-31'
+    expected_completion: '2024-08-31',
+    implementing_agency: 'ia002',
+    agency_name: 'Skill Development Institute',
+    approval_status: 'Approved',
+    approved_amount: 8000000
   }
 ];
 
@@ -75,21 +95,33 @@ export const mockAgencies = [
     name: 'Bharat Infrastructure Pvt Ltd',
     type: 'Infrastructure Development',
     contact_person: 'Eng. Suresh Patel',
-    email: 'suresh.patel@bharatinfra.com'
+    email: 'suresh.patel@bharatinfra.com',
+    phone: '+91-9123456789',
+    license_no: 'INFRA/2023/001',
+    assignedProjectsCount: 1,
+    completedProjectsCount: 0
   },
   {
     id: 'ia002',
     name: 'Skill Development Institute',
     type: 'Training & Skill Development',
     contact_person: 'Dr. Meera Gupta',
-    email: 'meera.gupta@skilldev.org'
+    email: 'meera.gupta@skilldev.org',
+    phone: '+91-9123456788',
+    license_no: 'TRAIN/2023/002',
+    assignedProjectsCount: 2,
+    completedProjectsCount: 0
   },
   {
     id: 'ia003',
     name: 'National Construction Corp',
     type: 'Construction & Infrastructure',
     contact_person: 'Eng. Rajesh Kumar',
-    email: 'rajesh.kumar@ncc.in'
+    email: 'rajesh.kumar@ncc.in',
+    phone: '+91-9123456787',
+    license_no: 'CONST/2023/003',
+    assignedProjectsCount: 1,
+    completedProjectsCount: 0
   }
 ];
 

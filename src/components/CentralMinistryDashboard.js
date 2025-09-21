@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import { mockPublicSummary, mockProjects, mockAgencies } from '../services/mockData';
 import './Dashboard.css';
 
 const CentralMinistryDashboard = ({ user }) => {
@@ -59,26 +60,15 @@ const CentralMinistryDashboard = ({ user }) => {
   }, [projects, searchTerm, statusFilter, stateFilter, componentFilter, agencyFilter]);
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const [summaryRes, projectsRes, agenciesRes] = await Promise.all([
-        api.get('/api/dashboard/summary'),
-        api.get('/api/projects'),
-        api.get('/api/agencies')
-      ]);
-      
-      setSummary(summaryRes.data);
-      setProjects(projectsRes.data);
-      setFilteredProjects(projectsRes.data);
-      setAgencies(agenciesRes.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      if (error.response?.status !== 401) {
-        alert('Error loading data. Please try again.');
-      }
-    } finally {
+    // Use mock data directly for demo purposes
+    setLoading(true);
+    setTimeout(() => {
+      setSummary(mockPublicSummary);
+      setProjects(mockProjects);
+      setFilteredProjects(mockProjects);
+      setAgencies(mockAgencies);
       setLoading(false);
-    }
+    }, 1000); // Simulate loading time
   };
 
   const formatCurrency = (amount) => {
