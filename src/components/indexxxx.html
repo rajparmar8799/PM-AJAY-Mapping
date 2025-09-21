@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Task Management - PM-AJAY Portal</title>
+    <style>
+        /* Government Theme CSS Variables */
+        :root {
+            --primary-brown: #8B6F47;
+            --primary-tan: #C4A373;
+            --secondary-brown: #A67C52;
+            --accent-gold: #D4AF37;
+            --banner-brown: #B8956A;
+            --banner-dark: #8B6F47;
+            
+            --success-green: #4caf50;
+            --warning-orange: #D2691E;
+            --error-red: #B22222;
+            --info-blue: #4682B4;
+            
+            --background-white: #ffffff;
+            --background-light: #FFF8DC;
+            --background-cream: #F5F5DC;
+            --background-beige: #F5E6D3;
+            
+            --text-primary: #2F1B14;
+            --text-secondary: #8B6F47;
+            --text-muted: #A0826D;
+            
+            --border-light: #E6D5C7;
+            --border-medium: #C4A373;
+            --border-dark: #8B6F47;
+            
+            --shadow-light: rgba(139, 111, 71, 0.1);
+            --shadow-medium: rgba(139, 111, 71, 0.15);
+            --shadow-dark: rgba(139, 111, 71, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Roboto', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Government Header */
+        .govt-header {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 4px var(--shadow-light);
+            padding: 12px 0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .govt-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .emblem {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--banner-brown), var(--banner-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px var(--shadow-light);
+            font-size: 1.5rem;
+        }
+
+        .govt-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hindi-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .english-text {
+            font-size: 1.1rem;
+            color: var(--primary-brown);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--banner-brown) 0%, var(--banner-dark) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            text-align: center;
+            box-shadow: 0 8px 24px var(--shadow-medium);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Task Management Card */
+        .task-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px var(--shadow-medium);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--banner-brown) 0%, var(--banner-dark) 100%);
+            color: white;
+            padding: 24px;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-body {
+            padding: 32px;
+        }
+
+        /* Project Info Section */
+        .project-info {
+            background: var(--background-cream);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            border-left: 4px solid var(--primary-brown);
+        }
+
+        .project-info h3 {
+            color: var(--primary-brown);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Task List */
+        .task-list {
+            margin-bottom: 32px;
+        }
+
+        .task-item {
+            background: var(--background-white);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .task-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--banner-brown), var(--accent-gold));
+            border-radius: 12px 12px 0 0;
+        }
+
+        .task-item:hover {
+            border-color: var(--primary-brown);
+            box-shadow: 0 4px 16px var(--shadow-light);
+            transform: translateY(-2px);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .task-number {
+            background: var(--primary-brown);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-remove {
+            background: var(--error-red);
+            color: white;
+        }
+
+        .btn-remove:hover {
+            background: #8B1E1E;
+            transform: scale(1.1);
+        }
+
+        .task-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            padding: 12px 16px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 3px var(--shadow-light);
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23A67C52' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px 12px;
+            padding-right: 40px;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-pending {
+            background: rgba(255, 152, 0, 0.1);
+            color: var(--warning-orange);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .status-ready {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--success-green);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .status-blocked {
+            background: rgba(178, 34, 34, 0.1);
+            color: var(--error-red);
+            border: 1px solid rgba(178, 34, 34, 0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--banner-dark) 100%);
+            color: white;
+            box-shadow: 0 4px 12px var(--shadow-light);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--banner-dark) 0%, #6B5637 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: var(--text-secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #43a047;
+            transform: translateY(-2px);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 2px solid var(--border-light);
+        }
+
+        /* Dependency Indicator */
+        .dependency-info {
+            background: var(--background-beige);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 4px solid var(--warning-orange);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .task-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .task-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Government Header -->
+    <div class="govt-header">
+        <div class="header-container">
+            <div class="govt-logo">
+                <div class="emblem">🇮🇳</div>
+                <div class="govt-text">
+                    <div class="hindi-text">मंत्रालय / विभाग नाम</div>
+                    <div class="english-text">MINISTRY / DEPARTMENT NAME</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>📋 Project Task Management</h1>
+            <p>Assign and manage project tasks with dependencies and timelines</p>
+        </div>
+
+        <!-- Task Management Card -->
+        <div class="task-card">
+            <div class="card-header">
+                <h2>🎯 Create Project Tasks</h2>
+                <p>Define tasks, assign agencies, and set dependencies for efficient project execution</p>
+            </div>
+
+            <div class="card-body">
+                <!-- Project Info Section -->
+                <div class="project-info">
+                    <h3>📝 Project Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Project Name</span>
+                            <span class="info-value" id="projectName">Rural Water Supply Enhancement</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location</span>
+                            <span class="info-value" id="projectLocation">Aurangabad, Maharashtra</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Total Budget</span>
+                            <span class="info-value" id="projectBudget">₹2,50,00,000</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Expected Duration</span>
+                            <span class="info-value" id="projectDuration">12 months</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task List -->
+                <div class="task-list" id="taskList">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+
+                <!-- Add Task Button -->
+                <div style="text-align: center; margin-bottom: 32px;">
+                    <button class="btn btn-primary" onclick="addTask()">
+                        ➕ Add New Task
+                    </button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="resetTasks()">
+                        🔄 Reset All Tasks
+                    </button>
+                    <button class="btn btn-success" onclick="saveTasks()">
+                        💾 Save Task Plan
+                    </button>
+                    <button class="btn btn-primary" onclick="previewTasks()">
+                        👁️ Preview Timeline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Task Management System
+        let tasks = [];
+        let taskCounter = 0;
+
+        // Available agencies (in real implementation, this would come from API)
+        const agencies = [
+            { id: 'ia001', name: 'Bharat Infrastructure Pvt Ltd', type: 'Infrastructure' },
+            { id: 'ia002', name: 'Skill Development Institute', type: 'Training' },
+            { id: 'ia003', name: 'National Construction Corp', type: 'Construction' },
+            { id: 'wa001', name: 'Water Solutions Inc', type: 'Water Management' },
+            { id: 'env001', name: 'Green Environment Agency', type: 'Environmental' },
+            { id: 'tech001', name: 'Digital Tech Solutions', type: 'Technology' }
+        ];
+
+        // Initialize with one task
+        document.addEventListener('DOMContentLoaded', function() {
+            addTask();
+        });
+
+        function addTask() {
+            taskCounter++;
+            const taskId = `task_${taskCounter}`;
+            
+            const task = {
+                id: taskId,
+                name: `Task ${taskCounter}`,
+                agency: '',
+                dueDate: '',
+                dependency: '',
+                status: 'pending'
+            };
+
+            tasks.push(task);
+            renderTasks();
+        }
+
+        function removeTask(taskId) {
+            if (tasks.length <= 1) {
+                alert('At least one task is required for the project.');
+                return;
+            }
+
+            // Check if any other task depends on this task
+            const dependentTasks = tasks.filter(t => t.dependency === taskId);
+            if (dependentTasks.length > 0) {
+                const dependentNames = dependentTasks.map(t => t.name).join(', ');
+                alert(`Cannot remove this task. The following tasks depend on it: ${dependentNames}`);
+                return;
+            }
+
+            tasks = tasks.filter(task => task.id !== taskId);
+            renderTasks();
+        }
+
+        function updateTask(taskId, field, value) {
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                task[field] = value;
+                updateTaskStatus();
+                renderTasks();
+            }
+        }
+
+        function updateTaskStatus() {
+            tasks.forEach(task => {
+                if (task.dependency) {
+                    const dependentTask = tasks.find(t => t.id === task.dependency);
+                    if (dependentTask && dependentTask.status !== 'completed') {
+                        task.status = 'blocked';
+                    } else {
+                        task.status = 'ready';
+                    }
+                } else {
+                    task.status = 'ready';
+                }
+            });
+        }
+
+        function getStatusBadge(status) {
+            const badges = {
+                'pending': '<span class="status-badge status-pending">⏳ Pending</span>',
+                'ready': '<span class="status-badge status-ready">✅ Ready</span>',
+                'blocked': '<span class="status-badge status-blocked">🚫 Blocked</span>'
+            };
+            return badges[status] || badges['pending'];
+        }
+
+        function getDependencyInfo(task) {
+            if (!task.dependency) return '';
+            
+            const dependentTask = tasks.find(t => t.id === task.dependency);
+            const dependentName = dependentTask ? dependentTask.name : 'Unknown Task';
+            
+            return `<div class="dependency-info">
+                📎 <strong>Dependency:</strong> This task can only start after "${dependentName}" is completed.
+            </div>`;
+        }
+
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            
+            if (tasks.length === 0) {
+                taskList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📋</div>
+                        <h3>No Tasks Added</h3>
+                        <p>Click "Add New Task" to start planning your project tasks.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            taskList.innerHTML = tasks.map((task, index) => `
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-number">${index + 1}</div>
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            ${getStatusBadge(task.status)}
+                            <div class="task-actions">
+                                <button class="btn-icon btn-remove" onclick="removeTask('${task.id}')" title="Remove Task">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-form">
+                        <div class="form-group">
+                            <label class="form-label">Task Name</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   value="${task.name}"
+                                   onchange="updateTask('${task.id}', 'name', this.value)"
+                                   placeholder="Enter task name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Assign Agency</label>
+                            <select class="form-control form-select" 
+                                    onchange="updateTask('${task.id}', 'agency', this.value)">
+                                <option value="">Select Agency</option>
+                                ${agencies.map(agency => 
+                                    `<option value="${agency.id}" ${task.agency === agency.id ? 'selected' : ''}>
+                                        ${agency.name} (${agency.type})
+                                    </option>`
+                                ).join('')}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" 
+                                   class="form-control" 
+                                   value="${task.dueDate}"
+                                   onchange="updateTask('${task.id}', 'dueDate', this.value)"
+                                   min="${new Date().toISOString().split('T')[0]}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Dependency</label>
+                            <select class="form-control form-select" 
+                                    onchange="updateTask('${task.id}', 'dependency', this.value)">
+                                <option value="">No Dependency</option>
+                                ${tasks.filter(t => t.id !== task.id).map(t => 
+                                    `<option value="${t.id}" ${task.dependency === t.id ? 'selected' : ''}>
+                                        ${t.name}
+                                    </option>`
+                                ).join('')}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    ${getDependencyInfo(task)}
+                </div>
+            `).join('');
+        }
+
+        function resetTasks() {
+            if (confirm('Are you sure you want to reset all tasks? This action cannot be undone.')) {
+                tasks = [];
+                taskCounter = 0;
+                addTask(); // Add one default task
+            }
+        }
+
+        function saveTasks() {
+            // Validate tasks
+            const invalidTasks = tasks.filter(task => 
+                !task.name.trim() || !task.agency || !task.dueDate
+            );
+
+            if (invalidTasks.length > 0) {
+                alert('Please fill in all required fields (Task Name, Agency, and Due Date) for all tasks.');
+                return;
+            }
+
+            // In real implementation, this would save to backend
+            const taskData = {
+                projectId: 'PROJ_001', // Would come from actual project
+                tasks: tasks.map(task => ({
+                    ...task,
+                    createdAt: new Date().toISOString(),
+                    createdBy: 'current_user_id' // Would come from auth
+                }))
+            };
+
+            console.log('Saving tasks:', taskData);
+            
+            // Simulate save success
+            alert(`✅ Task plan saved successfully!\n\nProject: ${document.getElementById('projectName').textContent}\nTasks Created: ${tasks.length}\nAgencies Involved: ${new Set(tasks.map(t => t.agency)).size}`);
+        }
+
+        function previewTasks() {
+            if (tasks.length === 0) {
+                alert('Please add some tasks first.');
+                return;
+            }
+
+            const preview = tasks.map((task, index) => {
+                const agency = agencies.find(a => a.id === task.agency);
+                const dependency = task.dependency ? 
+                    tasks.find(t => t.id === task.dependency)?.name : 'None';
+                
+                return `${index + 1}. ${task.name}
+   📅 Due: ${task.dueDate || 'Not set'}
+   🏢 Agency: ${agency?.name || 'Not assigned'}
+   📎 Depends on: ${dependency}
+   ⚡ Status: ${task.status.toUpperCase()}`;
+            }).join('\n\n');
+
+            alert(`📋 Task Timeline Preview:\n\n${preview}`);
+        }
+
+        // Utility function to format dates
+        function formatDate(dateString) {
+            if (!dateString) return 'Not set';
+            return new Date(dateString).toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+        }
+
+        // Auto-save functionality (optional)
+        setInterval(() => {
+            if (tasks.length > 0) {
+                localStorage.setItem('pm_ajay_tasks', JSON.stringify(tasks));
+            }
+        }, 30000); // Save every 30 seconds
+
+        // Load saved tasks on page load
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('pm_ajay_tasks');
+            if (saved) {
+                try {
+                    const savedTasks = JSON.parse(saved);
+                    if (savedTasks.length > 0) {
+                        tasks = savedTasks;
+                        taskCounter = Math.max(...tasks.map(t => parseInt(t.id.split('_')[1])));
+                        updateTaskStatus();
+                        renderTasks();
+                    }
+                } catch (e) {
+                    console.error('Error loading saved tasks:', e);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
