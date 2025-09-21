@@ -8,246 +8,233 @@ const LearnMore = () => {
       {/* Header */}
       <header className="learn-more-header">
         <div className="header-content">
-          <Link to="/" className="back-home">
-            <span className="back-icon">←</span>
-            Back to Home
+          <Link to="/" className="logo">
+            <span className="logo-text">PM-AJAY Portal</span>
           </Link>
-          <h1>PM-AJAY Yojna</h1>
-          <p>Comprehensive Rural Development Initiative</p>
+          <Link to="/" className="back-link">
+            Back to home
+          </Link>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="learn-hero">
+      <section className="learn-more-hero">
+        <div className="hero-content">
+          <h1 className="hero-title">Understanding PM-AJAY</h1>
+          <p className="hero-subtitle">
+            Pradhan Mantri Anusuchit Jaati Abhyuday Yojana - Empowering Communities Through Integrated Development
+          </p>
+        </div>
+      </section>
+
+      {/* Introduction */}
+      <section className="intro-section">
         <div className="container">
-          <div className="hero-content">
-            <h2>Transforming Rural India Through Digital Innovation</h2>
+          <div className="intro-content">
+            <h2>What is PM-AJAY?</h2>
             <p>
-              PM-AJAY Yojna is a flagship initiative by the Ministry of Rural Development,
-              Government of India, designed to accelerate rural development through
-              technology-driven project management and transparent fund utilization.
+              Pradhan Mantri Anusuchit Jaati Abhyuday Yojana (PM-AJAY) is a flagship scheme under the
+              Ministry of Social Justice & Empowerment, Government of India. Launched to uplift Scheduled Castes
+              through comprehensive village development, the scheme focuses on integrated infrastructure support
+              and educational facilities to create sustainable development in rural areas.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Overview Section */}
-      <section className="overview-section">
-        <div className="container">
-          <h2>Program Overview</h2>
-          <div className="overview-grid">
-            <div className="overview-card">
-              <div className="overview-icon">🎯</div>
-              <h3>Mission</h3>
-              <p>
-                To create sustainable rural infrastructure and improve quality of life
-                for millions of rural citizens through efficient project execution
-                and transparent governance.
-              </p>
-            </div>
-            <div className="overview-card">
-              <div className="overview-icon">💰</div>
-              <h3>Budget Allocation</h3>
-              <p>
-                Over ₹3,200 crore allocated across various development sectors,
-                ensuring comprehensive coverage of rural development needs.
-              </p>
-            </div>
-            <div className="overview-card">
-              <div className="overview-icon">📊</div>
-              <h3>Impact Metrics</h3>
-              <p>
-                200+ active projects, 28 states covered, and over 1 million lives
-                positively impacted through targeted interventions.
-              </p>
+            <div className="key-stats">
+              <div className="stat-item">
+                <span className="stat-number">₹3,200 Cr</span>
+                <span className="stat-label">Total Budget Allocation</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">28</span>
+                <span className="stat-label">States/UTs Covered</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">200+</span>
+                <span className="stat-label">Active Projects</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">75%</span>
+                <span className="stat-label">Average Completion Rate</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Three Components Section */}
+      {/* Scheme Components */}
       <section className="components-section">
         <div className="container">
           <h2>The Three Pillars of PM-AJAY</h2>
-          <p className="section-subtitle">
-            PM-AJAY operates through three interconnected components that work synergistically
-            to achieve comprehensive rural development.
+          <p className="section-intro">
+            PM-AJAY operates through three interconnected components that work together to create
+            sustainable development in Scheduled Caste communities.
           </p>
 
           <div className="components-grid">
-            {/* Component 1 */}
             <div className="component-card">
               <div className="component-header">
-                <div className="component-number">01</div>
-                <h3>Digital Infrastructure Development</h3>
+                <div className="component-icon">🏘️</div>
+                <h3>Adarsh Gram Yojana</h3>
+                <span className="component-tag">Infrastructure</span>
               </div>
               <div className="component-content">
                 <p>
-                  Building robust digital infrastructure to connect rural communities
-                  with modern technology solutions and government services.
+                  Integrated development of villages with comprehensive infrastructure including roads,
+                  drinking water, sanitation, community centers, health and education facilities.
                 </p>
+                <h4>Key Features:</h4>
                 <ul>
-                  <li>High-speed internet connectivity in rural areas</li>
-                  <li>Digital literacy programs for rural youth</li>
-                  <li>E-governance platforms for local administration</li>
-                  <li>Smart village management systems</li>
+                  <li>Rural road connectivity</li>
+                  <li>Drinking water facilities</li>
+                  <li>Sanitation and hygiene infrastructure</li>
+                  <li>Community centers and public spaces</li>
+                  <li>Primary health centers</li>
+                  <li>Educational facilities</li>
                 </ul>
+                <div className="component-stats">
+                  <span className="budget">₹2,000 Cr Allocated</span>
+                  <span className="coverage">150 Villages Targeted</span>
+                </div>
               </div>
             </div>
 
-            {/* Component 2 */}
             <div className="component-card">
               <div className="component-header">
-                <div className="component-number">02</div>
-                <h3>Economic Empowerment Initiatives</h3>
+                <div className="component-icon">🏫</div>
+                <h3>Hostels for SC Students</h3>
+                <span className="component-tag">Education</span>
               </div>
               <div className="component-content">
                 <p>
-                  Creating sustainable livelihood opportunities and economic growth
-                  through skill development and entrepreneurship programs.
+                  Construction and maintenance of hostels for Scheduled Caste boys and girls to ensure
+                  access to quality education and reduce dropout rates.
                 </p>
+                <h4>Key Features:</h4>
                 <ul>
-                  <li>Vocational training centers in rural areas</li>
-                  <li>Women entrepreneurship programs</li>
-                  <li>Agriculture technology adoption</li>
-                  <li>Micro-enterprise development support</li>
+                  <li>Modern hostel facilities</li>
+                  <li>Educational support services</li>
+                  <li>Nutritional support</li>
+                  <li>Counseling and mentorship</li>
+                  <li>Transportation facilities</li>
+                  <li>Digital learning resources</li>
                 </ul>
+                <div className="component-stats">
+                  <span className="budget">₹800 Cr Allocated</span>
+                  <span className="coverage">50,000 Students Benefited</span>
+                </div>
               </div>
             </div>
 
-            {/* Component 3 */}
             <div className="component-card">
               <div className="component-header">
-                <div className="component-number">03</div>
-                <h3>Social Infrastructure Enhancement</h3>
+                <div className="component-icon">💰</div>
+                <h3>Grant-in-Aid</h3>
+                <span className="component-tag">Economic Support</span>
               </div>
               <div className="component-content">
                 <p>
-                  Improving essential social services and community infrastructure
-                  to enhance quality of life and social development indicators.
+                  Financial assistance to states, NGOs, and community organizations for projects that
+                  benefit Scheduled Castes through skill development and livelihood generation.
                 </p>
+                <h4>Key Features:</h4>
                 <ul>
-                  <li>Healthcare facility upgrades</li>
-                  <li>Education infrastructure development</li>
-                  <li>Safe drinking water and sanitation</li>
-                  <li>Community center construction</li>
+                  <li>Skill development programs</li>
+                  <li>Livelihood generation projects</li>
+                  <li>Community asset creation</li>
+                  <li>Entrepreneurship support</li>
+                  <li>Financial literacy programs</li>
+                  <li>Market linkages</li>
                 </ul>
+                <div className="component-stats">
+                  <span className="budget">₹400 Cr Allocated</span>
+                  <span className="coverage">25,000 Families Supported</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Implementation Model */}
+      {/* Implementation Strategy */}
       <section className="implementation-section">
         <div className="container">
-          <h2>Implementation Framework</h2>
+          <h2>Implementation Strategy</h2>
           <div className="implementation-content">
-            <div className="implementation-text">
-              <h3>How PM-AJAY Works</h3>
-              <p>
-                The program follows a structured implementation model that ensures
-                accountability, transparency, and measurable outcomes.
-              </p>
-              <div className="implementation-steps">
-                <div className="step">
-                  <div className="step-number">1</div>
-                  <div className="step-content">
-                    <h4>Project Identification</h4>
-                    <p>Village committees identify local development needs and priorities.</p>
-                  </div>
-                </div>
-                <div className="step">
-                  <div className="step-number">2</div>
-                  <div className="step-content">
-                    <h4>Technical Assessment</h4>
-                    <p>State-level technical teams evaluate project feasibility and requirements.</p>
-                  </div>
-                </div>
-                <div className="step">
-                  <div className="step-number">3</div>
-                  <div className="step-content">
-                    <h4>Agency Assignment</h4>
-                    <p>Qualified implementing agencies are assigned based on expertise and capacity.</p>
-                  </div>
-                </div>
-                <div className="step">
-                  <div className="step-number">4</div>
-                  <div className="step-content">
-                    <h4>Fund Allocation</h4>
-                    <p>Central ministry approves and allocates funds for approved projects.</p>
-                  </div>
-                </div>
-                <div className="step">
-                  <div className="step-number">5</div>
-                  <div className="step-content">
-                    <h4>Implementation & Monitoring</h4>
-                    <p>Real-time tracking and progress monitoring throughout project lifecycle.</p>
-                  </div>
-                </div>
+            <div className="strategy-grid">
+              <div className="strategy-card">
+                <h3>🎯 Planning Phase</h3>
+                <p>
+                  Comprehensive village assessments and community consultations to identify specific needs
+                  and development priorities for each location.
+                </p>
               </div>
-            </div>
-            <div className="implementation-visual">
-              <div className="process-diagram">
-                <div className="process-step">
-                  <div className="process-icon">🏘️</div>
-                  <p>Village Level</p>
-                </div>
-                <div className="process-arrow">→</div>
-                <div className="process-step">
-                  <div className="process-icon">🏛️</div>
-                  <p>State Level</p>
-                </div>
-                <div className="process-arrow">→</div>
-                <div className="process-step">
-                  <div className="process-icon">🏢</div>
-                  <p>Central Level</p>
-                </div>
-                <div className="process-arrow">→</div>
-                <div className="process-step">
-                  <div className="process-icon">👷</div>
-                  <p>Implementation</p>
-                </div>
+              <div className="strategy-card">
+                <h3>🏗️ Execution Phase</h3>
+                <p>
+                  Implementation through empaneled agencies with regular monitoring and quality assurance
+                  to ensure timely and effective project delivery.
+                </p>
+              </div>
+              <div className="strategy-card">
+                <h3>📊 Monitoring Phase</h3>
+                <p>
+                  Real-time tracking of project progress, fund utilization, and impact assessment through
+                  the PM-AJAY portal and field monitoring teams.
+                </p>
+              </div>
+              <div className="strategy-card">
+                <h3>🎉 Sustainability Phase</h3>
+                <p>
+                  Capacity building and community ownership to ensure long-term sustainability of
+                  development initiatives and continued benefits.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="features-section">
+      {/* Impact & Benefits */}
+      <section className="impact-section">
         <div className="container">
-          <h2>Key Features & Benefits</h2>
-          <div className="features-grid">
-            <div className="feature-item">
-              <div className="feature-icon">🔒</div>
-              <h3>Complete Transparency</h3>
-              <p>Real-time tracking of fund utilization and project progress visible to all stakeholders.</p>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">⚡</div>
-              <h3>Accelerated Implementation</h3>
-              <p>Streamlined processes reduce bureaucratic delays and speed up project completion.</p>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">🎯</div>
-              <h3>Data-Driven Decisions</h3>
-              <p>Analytics and insights guide resource allocation and optimize development outcomes.</p>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">🤝</div>
-              <h3>Collaborative Approach</h3>
-              <p>Multi-stakeholder engagement ensures inclusive development and community participation.</p>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">📱</div>
-              <h3>Digital Accessibility</h3>
-              <p>Mobile-first design ensures accessibility across devices and connectivity levels.</p>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">📈</div>
-              <h3>Measurable Impact</h3>
-              <p>Clear metrics and evaluation frameworks ensure accountability and continuous improvement.</p>
+          <h2>Expected Impact & Benefits</h2>
+          <div className="impact-content">
+            <div className="impact-grid">
+              <div className="impact-card">
+                <h3>🏘️ Village Development</h3>
+                <ul>
+                  <li>Improved infrastructure and connectivity</li>
+                  <li>Better access to essential services</li>
+                  <li>Enhanced quality of life</li>
+                  <li>Economic development opportunities</li>
+                </ul>
+              </div>
+              <div className="impact-card">
+                <h3>🎓 Education Enhancement</h3>
+                <ul>
+                  <li>Reduced dropout rates</li>
+                  <li>Increased enrollment in higher education</li>
+                  <li>Better learning outcomes</li>
+                  <li>Long-term career opportunities</li>
+                </ul>
+              </div>
+              <div className="impact-card">
+                <h3>💼 Economic Empowerment</h3>
+                <ul>
+                  <li>Skill development and training</li>
+                  <li>Employment generation</li>
+                  <li>Entrepreneurship opportunities</li>
+                  <li>Financial inclusion</li>
+                </ul>
+              </div>
+              <div className="impact-card">
+                <h3>🤝 Social Inclusion</h3>
+                <ul>
+                  <li>Community participation</li>
+                  <li>Social cohesion</li>
+                  <li>Reduced inequalities</li>
+                  <li>Empowered communities</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -257,19 +244,35 @@ const LearnMore = () => {
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2>Ready to Contribute to Rural Development?</h2>
-            <p>Join the PM-AJAY ecosystem and be part of India's rural transformation journey.</p>
+            <h2>Ready to Explore PM-AJAY?</h2>
+            <p>
+              Discover how PM-AJAY is transforming communities across India through integrated development initiatives.
+            </p>
             <div className="cta-buttons">
-              <Link to="/login" className="btn btn-primary">
-                Access Portal
+              <Link to="/public" className="btn btn-primary">
+                View Live Dashboard
               </Link>
-              <Link to="/public" className="btn btn-secondary">
-                View Projects
+              <Link to="/login" className="btn btn-secondary">
+                Access Portal
               </Link>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="learn-more-footer">
+        <div className="footer-content">
+          <div className="footer-links">
+            <Link to="/">Home</Link>
+            <Link to="/public">Dashboard</Link>
+            <Link to="/login">Login</Link>
+          </div>
+          <div className="footer-copyright">
+            © 2024 Ministry of Social Justice & Empowerment, Government of India
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

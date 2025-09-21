@@ -41,6 +41,9 @@ const LandingPage = () => {
               <Link to="/login" className="btn btn-primary btn-lg">
                 Access Portal
               </Link>
+              <Link to="/learn-more" className="btn btn-outline btn-lg">
+                Learn More
+              </Link>
               <Link to="/public" className="btn btn-secondary btn-lg">
                 View Dashboard
               </Link>
