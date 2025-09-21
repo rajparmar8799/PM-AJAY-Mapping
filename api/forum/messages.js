@@ -1,10 +1,41 @@
-const { dbAll } = require('../_db');
 const { authenticateToken } = require('../_middleware');
+
+// Mock forum messages data
+let mockMessages = [
+  {
+    id: 1,
+    user_id: 'ia001',
+    user_name: 'Bharat Infrastructure Pvt Ltd',
+    project_id: 'PROJ001',
+    message: 'Rural Road Construction Phase 1 update: We have successfully completed 75% of the road construction work. Currently working on the final stretch connecting villages 12-15.',
+    timestamp: '2024-09-20T10:30:00Z',
+    type: 'update'
+  },
+  {
+    id: 2,
+    user_id: 'ia002',
+    user_name: 'Skill Development Institute',
+    project_id: 'PROJ004',
+    message: 'Digital Literacy Training Program: We are pleased to report that 240 out of 300 rural youth have completed the basic digital literacy modules. The response has been excellent.',
+    timestamp: '2024-09-19T14:15:00Z',
+    type: 'update'
+  },
+  {
+    id: 3,
+    user_id: 'cm001',
+    user_name: 'Central Ministry Administrator',
+    project_id: null,
+    message: 'All implementing agencies are requested to submit their monthly progress reports by the end of this week.',
+    timestamp: '2024-09-18T09:00:00Z',
+    type: 'general'
+  }
+];
 
 module.exports = async function handler(req, res) {
   if (req.method === 'GET') {
     try {
-      const messages = await dbAll('SELECT * FROM forum_messages ORDER BY timestamp DESC');
+      // Return mock messages sorted by timestamp (newest first)
+      const messages = mockMessages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
       res.json(messages);
     } catch (error) {
       console.error('Get forum messages error:', error);
@@ -21,13 +52,20 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ message: 'Message content is required' });
       }
 
-      const { dbRun } = require('../_db');
-      const result = await dbRun(`
-        INSERT INTO forum_messages (user_id, user_name, project_id, message, type)
-        VALUES (?, ?, ?, ?, 'update')
-      `, [userId, userName, project_id || null, message]);
+      // Create new message
+      const newMessage = {
+        id: Date.now(),
+        user_id: userId,
+        user_name: userName,
+        project_id: project_id || null,
+        message: message,
+        timestamp: new Date().toISOString(),
+        type: 'update'
+      };
 
-      const newMessage = await require('../_db').dbGet('SELECT * FROM forum_messages WHERE id = ?', [result.id]);
+      // Add to mock data
+      mockMessages.push(newMessage);
+
       res.json({ message: 'Message posted successfully', data: newMessage });
     } catch (error) {
       console.error('Post forum message error:', error);
