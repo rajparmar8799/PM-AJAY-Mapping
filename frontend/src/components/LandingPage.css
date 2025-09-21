@@ -1760,7 +1760,7 @@
 
 /* Login Button in Header */
 .login-btn {
-  background: #16a34a;
+  background: #1a73e8;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -1770,7 +1770,7 @@
 }
 
 .login-btn:hover {
-  background: #15803d;
+  background: #1557b0;
   color: white;
 }
 
