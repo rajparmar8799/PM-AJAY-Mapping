@@ -1,4 +1,3 @@
-const { dbGet } = require('../_db');
 const { authenticateToken } = require('../_middleware');
 
 module.exports = async function handler(req, res) {
@@ -9,78 +8,53 @@ module.exports = async function handler(req, res) {
   try {
     const user = authenticateToken(req);
     const userRole = user.role;
-    const userId = user.id;
-    const userState = user.state;
-    const userVillage = user.village;
 
+    // Mock data for dashboard summary
     let summary = {};
 
     switch(userRole) {
       case 'central_ministry':
-        const totalProjects = await dbGet('SELECT COUNT(*) as count FROM projects');
-        const totalBudget = await dbGet('SELECT SUM(budget_allocated) as total FROM projects');
-        const totalUtilized = await dbGet('SELECT SUM(budget_utilized) as total FROM projects');
-        const completedProjects = await dbGet('SELECT COUNT(*) as count FROM projects WHERE status = "Completed" OR progress_percentage >= 100');
-        const activeAgencies = await dbGet('SELECT COUNT(DISTINCT implementing_agency) as count FROM projects WHERE implementing_agency IS NOT NULL');
-        const avgProgress = await dbGet('SELECT AVG(progress_percentage) as avg FROM projects');
-
         summary = {
-          totalProjects: totalProjects.count,
-          completedProjects: completedProjects.count,
-          inProgressProjects: totalProjects.count - completedProjects.count,
-          totalBudgetAllocated: totalBudget.total || 0,
-          totalBudgetUtilized: totalUtilized.total || 0,
-          budgetUtilizationPercent: totalBudget.total ? Math.round((totalUtilized.total / totalBudget.total) * 100) : 0,
-          activeAgencies: activeAgencies.count,
-          averageProgress: Math.round(avgProgress.avg || 0)
+          totalProjects: 4,
+          completedProjects: 1,
+          inProgressProjects: 3,
+          totalBudgetAllocated: 66000000,
+          totalBudgetUtilized: 38150000,
+          budgetUtilizationPercent: 58,
+          activeAgencies: 3,
+          averageProgress: 61
         };
         break;
 
       case 'state_admin':
-        const stateProjects = await dbGet('SELECT COUNT(*) as count FROM projects WHERE state = ?', [userState]);
-        const stateBudget = await dbGet('SELECT SUM(budget_allocated) as total FROM projects WHERE state = ?', [userState]);
-        const stateUtilized = await dbGet('SELECT SUM(budget_utilized) as total FROM projects WHERE state = ?', [userState]);
-        const stateCompleted = await dbGet('SELECT COUNT(*) as count FROM projects WHERE state = ? AND (status = "Completed" OR progress_percentage >= 100)', [userState]);
-        const stateAvgProgress = await dbGet('SELECT AVG(progress_percentage) as avg FROM projects WHERE state = ?', [userState]);
-
         summary = {
-          stateProjects: stateProjects.count,
-          completedProjects: stateCompleted.count,
-          inProgressProjects: stateProjects.count - stateCompleted.count,
-          budgetAllocated: stateBudget.total || 0,
-          budgetUtilized: stateUtilized.total || 0,
-          budgetUtilizationPercent: stateBudget.total ? Math.round((stateUtilized.total / stateBudget.total) * 100) : 0,
-          averageProgress: Math.round(stateAvgProgress.avg || 0)
+          stateProjects: 2,
+          completedProjects: 1,
+          inProgressProjects: 1,
+          budgetAllocated: 33000000,
+          budgetUtilized: 24150000,
+          budgetUtilizationPercent: 73,
+          averageProgress: 55
         };
         break;
 
       case 'village_committee':
-        const villageProjects = await dbGet('SELECT COUNT(*) as count FROM projects WHERE village = ?', [userVillage]);
-        const villageBudget = await dbGet('SELECT SUM(budget_allocated) as total FROM projects WHERE village = ?', [userVillage]);
-        const villageCompleted = await dbGet('SELECT COUNT(*) as count FROM projects WHERE village = ? AND (status = "Completed" OR progress_percentage >= 100)', [userVillage]);
-        const villageAvgProgress = await dbGet('SELECT AVG(progress_percentage) as avg FROM projects WHERE village = ?', [userVillage]);
-
         summary = {
-          villageProjects: villageProjects.count,
-          completedProjects: villageCompleted.count,
-          inProgressProjects: villageProjects.count - villageCompleted.count,
-          budgetAllocated: villageBudget.total || 0,
-          averageProgress: Math.round(villageAvgProgress.avg || 0)
+          villageProjects: 1,
+          completedProjects: 0,
+          inProgressProjects: 1,
+          budgetAllocated: 15000000,
+          averageProgress: 60
         };
         break;
 
       case 'implementing_agency':
-        const assignedProjects = await dbGet('SELECT COUNT(*) as count FROM projects WHERE implementing_agency = ?', [userId]);
-        const agencyBudget = await dbGet('SELECT SUM(budget_allocated) as total FROM projects WHERE implementing_agency = ?', [userId]);
-        const agencyCompleted = await dbGet('SELECT COUNT(*) as count FROM projects WHERE implementing_agency = ? AND (status = "Completed" OR progress_percentage >= 100)', [userId]);
-        const agencyAvgProgress = await dbGet('SELECT AVG(progress_percentage) as avg FROM projects WHERE implementing_agency = ?', [userId]);
-
         summary = {
-          assignedProjects: assignedProjects.count,
-          completedProjects: agencyCompleted.count,
-          inProgressProjects: assignedProjects.count - agencyCompleted.count,
-          totalBudget: agencyBudget.total || 0,
-          averageProgress: Math.round(agencyAvgProgress.avg || 0)
+          assignedProjects: 2,
+          completedProjects: 0,
+          inProgressProjects: 2,
+          totalBudget: 43000000,
+          averageProgress: 52
         };
         break;
     }
