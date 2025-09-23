@@ -99,7 +99,7 @@ const LoginPage = ({ onLogin }) => {
       onLogin(user, token);
     } catch (error) {
       console.error('Login error:', error);
-      alert('Login failed. Please ensure the backend server is running.');
+      alert('Starting backend servers , can you please try again.');
     } finally {
       setLoading(false);
     }
