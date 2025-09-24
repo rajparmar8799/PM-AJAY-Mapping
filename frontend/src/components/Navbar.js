@@ -40,7 +40,7 @@ const Navbar = ({ user, onLogout }) => {
             <span className="emblem-icon">🇮🇳</span>
           </div>
           <div className="brand-content">
-            <h1 className="brand-title">PM-AJAY Portal</h1>
+            <h1 className="brand-title">PM AJAY SETU</h1>
             <p className="brand-subtitle">Government of India</p>
           </div>
         </div>

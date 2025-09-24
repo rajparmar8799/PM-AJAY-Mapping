@@ -122,7 +122,7 @@ const LoginPage = ({ onLogin }) => {
       <header className="login-header">
         <div className="header-content">
           <Link to="/" className="logo">
-            <span className="logo-text">PM-AJAY Portal</span>
+            <span className="logo-text">PM AJAY SETU</span>
           </Link>
           <Link to="/" className="back-link">
             Back to home
@@ -136,7 +136,7 @@ const LoginPage = ({ onLogin }) => {
           <div className="login-card">
             <div className="login-header">
               <h1 className="login-title">Sign in</h1>
-              <p className="login-subtitle">to continue to PM-AJAY Portal</p>
+              <p className="login-subtitle">to continue to PM AJAY SETU</p>
             </div>
 
             <div className="login-content">

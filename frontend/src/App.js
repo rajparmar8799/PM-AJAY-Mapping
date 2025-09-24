@@ -94,7 +94,7 @@ function App() {
     return (
       <div className="loading-container">
         <div className="loading-spinner"></div>
-        <p>Loading PM-AJAY Portal...</p>
+        <p>Loading PM AJAY SETU...</p>
       </div>
     );
   }

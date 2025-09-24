@@ -9,8 +9,13 @@ const LandingPage = () => {
       <header className="gov-header">
         <div className="gov-header-content">
           <div className="gov-logo">
+            <img
+              src="https://i.pinimg.com/736x/82/00/5e/82005ec86b6879964de229b9b3262ecd.jpg"
+              alt="Government of India"
+              className="gov-logo-image"
+            />
             <div className="gov-title">
-              <h1>PM-AJAY Portal</h1>
+              <h1>PM AJAY SETU</h1>
               <p>Ministry of Social Justice & Empowerment</p>
             </div>
           </div>
@@ -51,8 +56,7 @@ const LandingPage = () => {
           </div>
           <div className="hero-banner">
             <div className="banner-placeholder">
-              <span>🏛️</span>
-              <p>Government of India</p>
+              <p>Empowering Communities</p>
             </div>
           </div>
         </div>
@@ -248,7 +252,7 @@ const LandingPage = () => {
             <div className="footer-section">
               <h4>Ministry of Social Justice & Empowerment</h4>
               <p>Government of India</p>
-              <p>PM-AJAY Portal - Pradhan Mantri Anusuchit Jaati Abhyuday Yojana</p>
+              <p>PM AJAY SETU - Pradhan Mantri Anusuchit Jaati Abhyuday Yojana</p>
             </div>
             <div className="footer-section">
               <h4>Quick Links</h4>

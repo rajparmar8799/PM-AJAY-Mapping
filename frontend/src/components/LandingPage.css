@@ -33,6 +33,15 @@
   gap: 16px;
 }
 
+.gov-logo-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
 .gov-title h1 {
   margin: 0;
   font-size: 20px;
@@ -90,13 +99,12 @@
 }
 
 .hero-content {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
   padding: 0 32px;
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 60px;
   align-items: center;
   min-height: 400px;
