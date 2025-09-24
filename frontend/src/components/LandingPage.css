@@ -99,12 +99,11 @@
 }
 
 .hero-content {
-  width: 100%;
-  padding: 0 32px;
+  margin: 0 200px 0 300px;
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 600px 1fr;
   gap: 60px;
   align-items: center;
   min-height: 400px;
