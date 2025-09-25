@@ -27,7 +27,7 @@ const PublicDashboard = () => {
       setAgencies(agenciesRes.data);
     } catch (error) {
       console.error('Error fetching public data:', error);
-      alert('Error loading public data. Please try again.');
+      alert('Public Data will be loaded here from database in future.');
     } finally {
       setLoading(false);
     }
